@@ -1,0 +1,50 @@
+?- house = house.
+true.
+Explanation: Both terms are identical atoms, so unification succeeds.
+
+ 
+?- house = abc.
+false.
+Explanation: The atom house does not match the atom abc.
+
+
+?- edge(a,b) = edge(C,b).
+C = a.
+Explanation: The predicates match, the 2nd arguments b match, and the variable C unifies with a.
+
+
+?- edge(a,d) = edge(C,B).
+C = a,
+B = d
+Explanation: The variable C unifies with atom a, and B unifies with atom d.
+
+
+?- edge(C,B) = edge(a,d).
+C = a,
+B = d.
+Explanation: Order does not affect unification, The variable C unifies with atom a, and B unifies with atom d.
+
+
+?- edge(A,f(g,h)) = edge(a,B).
+A = a,
+B = f(g, h).
+Explanation: Variable A unifies with a, and variable B unifies with the term f(g,h).
+
+
+?- edge(A,A) = edge(b,c).
+false.
+Explanation: Variable A cannot unify with two different atoms (b and c) at the same time.
+
+
+?- edge(A,A) = edge(b,b).
+A = b.
+Explanation: Both arguments on the right are identical (b), so variable A unifies with b.
+
+
+?- A = B, B = f.
+A = B, B = f. (or A = f, B = f)
+Explanation: A unifies with B, and both bind to f.
+
+?- A = B, B = f, A = e.
+false.
+Explanation: A is already bound to f, so matching with e fails.
